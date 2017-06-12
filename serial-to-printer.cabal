@@ -1,0 +1,59 @@
+-- This file has been generated from package.yaml by hpack version 0.17.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:                serial-to-printer
+version:             0.1.0.0
+homepage:            https://github.com/smurphy8/serial-to-printer#readme
+bug-reports:         https://github.com/smurphy8/serial-to-printer/issues
+license:             BSD3
+license-file:        LICENSE
+author:              Scott Murphy
+maintainer:          scottmurphy09@gmail.com
+copyright:           MIT License
+category:            Embedded
+build-type:          Simple
+cabal-version:       >= 1.10
+
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/smurphy8/serial-to-printer
+
+library
+  hs-source-dirs:
+      src
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_serial_to_printer
+  build-depends:
+      base >=4.7 && <5
+    , serialport
+    , bytestring
+    , atomic-write
+    , turtle
+  default-language: Haskell2010
+
+executable serial-to-printer-exe
+  hs-source-dirs:
+      app
+  main-is: Main.hs
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base
+    , serial-to-printer
+  default-language: Haskell2010
+
+test-suite serial-to-printer-test
+  type: exitcode-stdio-1.0
+  hs-source-dirs:
+      test
+  main-is: Spec.hs
+  build-depends:
+      base
+    , serial-to-printer
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  default-language: Haskell2010

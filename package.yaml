@@ -1,0 +1,42 @@
+name: serial-to-printer
+version: '0.1.0.0'
+category: Embedded
+author: Scott Murphy
+maintainer: scottmurphy09@gmail.com
+copyright: MIT License
+license: BSD3
+github: smurphy8/serial-to-printer
+extra-source-files:
+- README.md
+library:
+  source-dirs: src
+  exposed-modules:
+  - Lib
+  dependencies:
+  - base >=4.7 && <5
+  - serialport
+  - bytestring
+  - atomic-write
+  - turtle
+executables:
+  serial-to-printer-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - serial-to-printer
+tests:
+  serial-to-printer-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - serial-to-printer
